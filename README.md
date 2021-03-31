@@ -1,5 +1,5 @@
-# TNM098-projekt
+# TNM098-project
 
-	**Ett projekt i kursen Avancerad visuell dataanlys.**
-
-	*Av Erik och Olivia.*
+**A project in the course Advanced visual data analysis  (TNM098).** 
+Project is based on VAST-mini challenge scenarios. 
+*Av Erik och Olivia.*
