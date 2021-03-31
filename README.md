@@ -5,4 +5,3 @@
 Project is based on VAST-mini challenge scenarios. 
 
 *Av Erik och Olivia.*
-Något kul
