@@ -1,9 +1,41 @@
 body {
-	background-color: #b15858;
+  height: 20px;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0;
 }
 
 h1 {
-	font-family: "Roboto Mono", monospace;
-	font-size: 22px;
-	color: #ffffff;
+  font-family: 'Roboto Mono', monospace; 
+  font-size: 22px;
+  color: #181818;
 }
+
+h3 {
+  font-family: 'Roboto Mono', monospace; 
+  color: #524e4e;
+}
+
+#showInfo {
+  font-family: 'Roboto Mono', monospace;
+  height: 40px;
+  position: relative;
+  top: -100px;
+}
+
+.tooltip {	
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #181818;
+}
+
+.legend {
+  font-family: 'Roboto Mono', monospace; 
+  font-size: 12px;
+}
+
+
