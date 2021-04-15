@@ -1,11 +1,13 @@
 queue()
   .defer(d3.json, "data/geodata/StHimark.json")
-  //.defer(d3.csv, "data/Covid_data/who_data_210301.csv")
+  .defer(d3.csv, "data/MC1/mc1-reports-data.csv")
   .await(ready);
 
-function ready(error, topoCity) {
+function ready(error, topoCity, appData) {
   if (error) throw error;
   const geodata = topojson.feature(data, data.objects.Nbrhood);
+  geodata = parseData(appData);
+  console.log(geodata);
   generateMap(geodata);
 }
 
