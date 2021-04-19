@@ -11,21 +11,39 @@ function parseData(geoData, appData){
     //var minMag = d3.min(appData, function (d) { return d['shake_intensity'] })
 
     //Set the axis for the scaler
-    xScale.domain([minDate, maxDate]);
-    navXScale.domain(xScale);
+    //xScale.domain([minDate, maxDate]);
+    //navXScale.domain(xScale);
 
-    var shakeIntensityNbrhood = {};
+    var shakeTimeIntensity = {};
+    var temp = {};
+    var tempShakeTimeIntensity = {};
+
     appData.forEach(d=>{
-        shakeIntensityNbrhood[d.location] = +d['shake_intensity'];
+        shakeTimeIntensity[d.location] = [];
     });
 
-    var timeShakeIntensity = {};
-    appData.forEach(d=> {
-        timeShakeIntensity[d.location] = +parseDate(d['time']);
+    
+
+    appData.forEach(d=>{
+        shakeTimeIntensity[d.location].push([parseDate(d['time']), d['shake_intensity']]);//(tempShakeTimeIntensity[d]);//+[d, (tempShakeTimeIntensity[d.location])];
     });
 
     geoData.features.forEach(function(d) {
-        Object.assign(d.properties, {'intensity': Math.round(shakeIntensityNbrhood[d.properties.Nbrhood]), 'timestamp': timeShakeIntensity[d.properties.Nbrhood]})
+        Object.assign(d.properties, {'intensityAndTime': shakeTimeIntensity[d.properties.Id]});
     });
     return geoData;
+
+    /*var nest = d3.nest()
+        .key(function(d){return d['location']})
+        .rollup(function(d) { return  {
+            time: d['time'],
+            shake_intensity: d['shake_intensity']}
+        })
+        .entries(appData);
+    console.log(nest);*/
+
+    /*appData.forEach(d=>{
+        shakeTimeIntensity[d.location] = (tempShakeTimeIntensity[d.location]);
+    });*/
+    
 }
