@@ -9,6 +9,7 @@ function ready(error, topoCity, appData) {
 	geodata = parseData(geodata, appData);
 	console.log(geodata);
 	generateMap(geodata);
+	slider(geoData);
 }
 
 function generateMap(geodata) {
