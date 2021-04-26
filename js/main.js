@@ -1,13 +1,13 @@
 queue()
 	.defer(d3.json, "data/geodata/StHimark-2.json")
-  .defer(d3.csv, "data/MC1/mc1-reports-data.csv")
+  	.defer(d3.csv, "data/MC1/mc1-reports-data.csv")
 	.await(ready);
 
-function ready(error, topoCity) {
+function ready(error, topoCity, appData) {
 	if (error) throw error;
 	geodata = topojson.feature(topoCity, topoCity.objects.StHimark);
-  geodata = parseData(appData);
-  console.log(geodata);
+	geodata = parseData(geodata, appData);
+	console.log(geodata);
 	generateMap(geodata);
 }
 
@@ -44,7 +44,7 @@ function generateMap(geodata) {
 		.enter()
 		.append("path")
 		.attr("id", function (d) {
-			console.log(d.properties.Id);
+			//console.log(d.properties.Id);
 			return "nId_" + d.properties.Id;
 		})
 		.style("fill", "white")
