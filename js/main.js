@@ -1,6 +1,6 @@
 queue()
 	.defer(d3.json, "data/geodata/StHimark-2.json")
-  	.defer(d3.csv, "data/MC1/mc1-reports-data.csv")
+	.defer(d3.csv, "data/MC1/mc1-reports-data.csv")
 	.await(ready);
 
 function ready(error, topoCity, appData) {
@@ -10,6 +10,8 @@ function ready(error, topoCity, appData) {
 	console.log(geodata);
 	generateMap(geodata);
 	slider(geoData);
+	processedData = parseData(geodata, appData);
+	generateMap(processedData);
 }
 
 function generateMap(geodata) {
@@ -45,7 +47,10 @@ function generateMap(geodata) {
 		.enter()
 		.append("path")
 		.attr("id", function (d) {
+<<<<<<< HEAD
 			//console.log(d.properties.Id);
+=======
+>>>>>>> 9dd4ee640bcf0288919122ec7e6af05abb60d9d3
 			return "nId_" + d.properties.Id;
 		})
 		.style("fill", "white")
@@ -53,6 +58,7 @@ function generateMap(geodata) {
 		.attr("d", path)
 
 		.on("mouseover", function (d) {
+			console.log(d);
 			d3.select("#nId_" + d.properties.Id)
 				.attr("stroke-width", 1)
 				.style("fill", "red")
